@@ -4,7 +4,7 @@ import pytest
 baseUrl = "https://jsonplaceholder.typicode.com/posts"
 
 def test_product_list_returns_200():
-    response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+    response = requests.get(f"{baseUrl}/1")
     assert response.status_code == 200
 
 def test_product_list_response_is_not_empty():
@@ -28,7 +28,7 @@ def test_product_list_response_item_has_body():
     assert response.json()[0]["body"] is not None
 
 def test_delete_product():
-    response = requests.delete("https://jsonplaceholder.typicode.com/posts/1")
+    response = requests.delete(f"{baseUrl}/1")
     assert response.status_code == 200
-    response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+    response = requests.get(f"{baseUrl}/1")
     assert response.status_code == 404
